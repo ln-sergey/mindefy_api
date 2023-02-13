@@ -1,0 +1,33 @@
+{
+  "name": "positive_training_tg_bot",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "npm run clean && npm run compile",
+    "clean": "rm -rf ./dist",
+    "compile": "npx tsc --skipLibCheck",
+    "start:prod": "node ./dist/index.js",
+    "start:dev": "nodemon --watch src --exec ts-node ./src/index.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ln-sergey/positive_training_tg_bot.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ln-sergey/positive_training_tg_bot/issues"
+  },
+  "homepage": "https://github.com/ln-sergey/positive_training_tg_bot#readme",
+  "devDependencies": {
+    "@types/node": "^18.13.0",
+    "nodemon": "^2.0.20",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.9.5"
+  },
+  "dependencies": {
+    "telegraf": "^4.11.2"
+  }
+}
