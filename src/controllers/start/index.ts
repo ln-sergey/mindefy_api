@@ -1,52 +1,82 @@
-import { Context } from "telegraf";
 import { Scenes } from "telegraf";
-import { ChatState } from "models/ChatState";
 import { message } from "telegraf/filters";
 import { AppContext } from "context";
+import { Statement } from "models/Statement";
+import * as Crypto from "crypto";
 
 const startScene = new Scenes.BaseScene<AppContext>("start");
 
-const chatIdToStage = new Map<number, ChatState>();
+interface SceneSessionState {
+  stage: number;
+  maxStages: number;
+  statementId?: string;
+}
 
 startScene.enter(async (ctx) => {
-  chatIdToStage.set(ctx.chat.id, {
+  await ctx.sendMessage(
+    "Please enter a negative statement about yourself. " +
+      ctx.session.user.language
+  );
+  ctx.scene.session.state = <SceneSessionState>{
     stage: 0,
-  });
-  await ctx.sendMessage("Please enter a negative statement about yourself. " + ctx.session.language);
+    maxStages: 4,
+  };
 });
 
-startScene.on(message("text"), async (ctx) => {
-  console.log(ctx.message.text);
-
-  const chatState = chatIdToStage.get(ctx.chat.id);
-  if (chatState?.stage == 0) {
-    chatState.stage++;
-    chatState.originalStatement = ctx.message.text;
+startScene.on(message("text"), async (ctx, next) => {
+  const sceneSessionState = ctx.scene.session.state as SceneSessionState;
+  sceneSessionState.stage++;
+  if (!sceneSessionState.statementId) {
+    const statement: Statement = {
+      origin: ctx.message.text,
+      created: Date.now(),
+      challenges: [],
+    };
+    const id = Crypto.createHash("sha256")
+      .update(JSON.stringify(statement))
+      .digest("hex");
+    await ctx.dataBase.collection<Statement>("statements").insertOne({
+      _id: id as any,
+      ...statement,
+    });
+    sceneSessionState.statementId = id;
     await ctx.sendMessage(
       `Please enter a statement disproving the original statement: "${ctx.message.text}"`
     );
-  } else if (chatState?.stage == 1) {
-    chatState.stage++;
+    return;
+  }
+  await next();
+});
+
+startScene.on(message("text"), async (ctx) => {
+  const sceneSessionState = ctx.scene.session.state as SceneSessionState;
+
+  await ctx.dataBase.collection<Statement>("statements").updateMany(
+    {
+      _id: sceneSessionState.statementId as any,
+    },
+    {
+      $push: { challenges: ctx.message.text },
+    }
+  );
+
+  if (sceneSessionState.stage != sceneSessionState.maxStages) {
     await ctx.sendMessage(
-      "2 more statements left. Enter another statement disproving the original statement"
+      `${
+        sceneSessionState.maxStages - sceneSessionState.stage
+      } more statements left. Enter another statement disproving the original statement`
     );
-  } else if (chatState?.stage == 2) {
-    chatState.stage++;
-    await ctx.sendMessage(
-      "1 more statements left. Enter another statement disproving the original statement"
-    );
-  } else if (chatState?.stage == 3) {
-    chatIdToStage.delete(ctx.chat.id);
+  } else {
     await ctx.sendMessage(
       "Congratulations! Now the statement doesn't seem so obvious anymore!\n" +
         "Train systematically and your thinking will become more optimistic and healthy!"
     );
-    ctx.scene.leave()
+    ctx.scene.leave();
   }
 });
 
 startScene.leave(async (ctx) => {
-  chatIdToStage.delete(ctx.chat.id);
+  console.log(ctx.scene.state);
 });
 
 export default startScene;

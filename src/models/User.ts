@@ -3,5 +3,5 @@ export interface User {
   username: string;
   name: string;
   lastActivity: number;
-  language: "en" | "ru";
+  language: string;
 }
