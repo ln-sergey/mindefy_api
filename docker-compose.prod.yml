@@ -7,6 +7,7 @@ services:
       - "27017:27017"
     volumes:
       - "storage:/bitnami/mongodb"
+    env_file: .env.prod
     environment:
       - MONGODB_ROOT_USER=$STORAGE_USERNAME
       - MONGODB_ROOT_PASSWORD=$STORAGE_PASSWORD
@@ -20,6 +21,7 @@ services:
     restart: unless-stopped
     volumes:
       - ./Services/Client/Bot:/app
+    env_file: .env.prod
     environment:
       - BOT_TOKEN=$BOT_TOKEN
       - STORAGE_DB_NAME=positive_db

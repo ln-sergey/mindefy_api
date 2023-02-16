@@ -5,11 +5,13 @@ volumes:
 
 services:
   storage:
+    env_file: .env.dev
     extends:
       file: docker-compose.main.yml
       service: storage
 
   client_bot:
+    env_file: .env.dev
     extends:
       file: docker-compose.main.yml
       service: client_bot
