@@ -3,7 +3,7 @@ import startScene from "./controllers/start";
 import { Telegraf } from "telegraf";
 import { Scenes } from "telegraf";
 import { AppContext } from "./context";
-import { getUserInfo } from "./middlewares/user-info";
+import { checkUser } from "./middlewares/check_user";
 import { MongoClient } from "mongodb";
 
 new MongoClient(
@@ -21,7 +21,7 @@ new MongoClient(
 
     bot.use(session());
     bot.use(stage.middleware());
-    bot.use(getUserInfo);
+    bot.use(checkUser);
 
     bot.start((ctx) => ctx.scene.enter("start"));
 

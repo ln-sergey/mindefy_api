@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  storage:
+    image: "bitnami/mongodb:6.0.4"
+    ports:
+      - "27017:27017"
+    volumes:
+      - "storage:/bitnami/mongodb"
+    environment:
+      - MONGODB_ROOT_USER=$STORAGE_USERNAME
+      - MONGODB_ROOT_PASSWORD=$STORAGE_PASSWORD
+      - MONGODB_PORT_NUMBER=27017
+      - MONGODB_ADVERTISED_HOSTNAME=storage
+
+  client_bot:
+    build:
+      context: ../Services/Client/Bot
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    volumes:
+      - ./Services/Client/Bot:/app
+    environment:
+      - BOT_TOKEN=$BOT_TOKEN
+      - STORAGE_DB_NAME=positive_db
+      - STORAGE_HOSTNAME=$STORAGE_HOSTNAME
+      - STORAGE_USERNAME=$STORAGE_USERNAME
+      - STORAGE_PASSWORD=$STORAGE_PASSWORD

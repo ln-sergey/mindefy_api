@@ -1,25 +1,15 @@
-version: '3.8'
+version: "3.8"
+
+volumes:
+  storage:
 
 services:
-  tg_bot:
-    build: ./
-    restart: unless-stopped
-    volumes:
-      - ./:/app
-    environment:
-      - BOT_TOKEN=$BOT_TOKEN
-      - DB_HOST=storage
-      - DB_USER=root
-      - DB_PASSWORD=root
-      - DB_PORT=27017
-      - DB_NAME=positive_db
-
   storage:
-    image: "bitnami/mongodb:6.0.4"
-    ports:
-      - "27017:27017"
-    environment:
-      - MONGODB_ROOT_USER=root
-      - MONGODB_ROOT_PASSWORD=root
-      - MONGODB_PORT_NUMBER=27017
-      - MONGODB_ADVERTISED_HOSTNAME=storage
+    extends:
+      file: docker-compose.main.yml
+      service: storage
+
+  client_bot:
+    extends:
+      file: docker-compose.main.yml
+      service: client_bot

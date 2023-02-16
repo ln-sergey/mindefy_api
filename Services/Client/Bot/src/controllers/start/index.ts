@@ -29,6 +29,7 @@ startScene.on(message("text"), async (ctx, next) => {
   if (!sceneSessionState.statementId) {
     const statement: Statement = {
       origin: ctx.message.text,
+      user_id: ctx.session.user._id as any,
       created: Date.now(),
       challenges: [],
     };

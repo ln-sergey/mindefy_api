@@ -1,5 +1,5 @@
 import { User } from "./models/User";
-import { Db } from "mongodb";
+import { Db, WithId } from "mongodb";
 import { Context, Scenes } from "telegraf";
 
 export interface AppContext extends Context {
@@ -9,5 +9,5 @@ export interface AppContext extends Context {
 }
 
 export interface AppSession extends Scenes.SceneSession {
-  user: User;
+  user: WithId<User>;
 }
