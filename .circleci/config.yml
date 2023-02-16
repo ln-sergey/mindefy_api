@@ -23,7 +23,7 @@ jobs:
       - run:
           name: Deploy to production
           command: |
-            ssh -i $SSH_KEY $REMOTE_USER@$REMOTE_HOST << EOF
+            ssh -i $SSH_KEY $REMOTE_USER@$REMOTE_HOST \<< EOF
             cd /path/to/your/application
             git pull
             docker-compose -f docker-compose.prod.yml up -d
@@ -32,7 +32,7 @@ jobs:
     docker:
       - image: docker/compose:latest
     environment:
-      - REMOTE_HOST=$PROD_REMOTE_HOST
+      - REMOTE_HOST=$DEV_REMOTE_HOST
       - REMOTE_USER=$PROD_REMOTE_USER
       - SSH_KEY=$PRIVATE_SSH_KEY
     steps:
@@ -40,8 +40,21 @@ jobs:
       - run:
           name: Deploy to dev
           command: |
-            ssh -i $SSH_KEY $REMOTE_USER@$REMOTE_HOST << EOF
+            ssh -i $SSH_KEY $REMOTE_USER@$REMOTE_HOST \<< EOF
             cd /path/to/your/application
             git pull
             docker-compose -f docker-compose.dev.yml up -d
             EOF
+workflows:
+  version: 2
+  build-and-deploy:
+    jobs:
+      - deploy-production:
+          filters:
+            branches:
+              only: master
+      - deploy-dev:
+          filters:
+            branches:
+              only: dev
+
