@@ -1,17 +1,25 @@
 version: "3.8"
 
 volumes:
-  storage:
+  storage_dev:
 
 services:
-  storage:
-    env_file: .env.dev
-    extends:
-      file: docker-compose.main.yml
-      service: storage
+  storage_dev:
+    image: "bitnami/mongodb:6.0.4"
+    ports:
+      - "5432:5432"
+    env_file:
+      - .env.dev
+    volumes:
+      - storage_dev:/bitnami/mongodb
+    environment:
+      - MONGODB_PORT_NUMBER=5432
+      - MONGODB_ADVERTISED_HOSTNAME=storage
 
-  client_bot:
-    env_file: .env.dev
+  client_bot_dev:
+    container_name: client_bot_dev
+    env_file:
+      - .env.dev
     extends:
-      file: docker-compose.main.yml
+      file: docker-compose.prod.yml
       service: client_bot

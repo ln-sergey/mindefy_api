@@ -9,11 +9,11 @@ import { WithId } from "mongodb";
  */
 export async function checkUser(ctx: AppContext, next: Function) {
   if (!ctx.session.user) {
-    let user = await ctx.dataBase
+    let user: WithId<User> = await ctx.dataBase
       .collection<User>("users")
       .findOne({ _id: ctx.from.id as any });
     if (!user) {
-      const user: WithId<User> = {
+      user = {
         _id: ctx.from.id as any,
         created: Date.now(),
         username: ctx.from.username,

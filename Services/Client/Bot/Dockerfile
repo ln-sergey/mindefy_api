@@ -2,7 +2,7 @@ FROM node:16-alpine as builder
 
 WORKDIR /app
 
-ADD . /app
+COPY . /app
 
 RUN npm i --no-optional && npm run build
 
