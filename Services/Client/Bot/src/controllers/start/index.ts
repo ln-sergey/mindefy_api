@@ -13,7 +13,7 @@ interface SceneSessionState {
 }
 
 startScene.enter(async (ctx) => {
-  await ctx.sendMessage(`Genious! Please enter a negative statement about yourself.`);
+  await ctx.sendMessage(`Please enter a negative statement about yourself.`);
   ctx.scene.session.state = <SceneSessionState>{
     stage: 0,
     maxStages: 4,
@@ -73,8 +73,6 @@ startScene.on(message("text"), async (ctx) => {
   }
 });
 
-startScene.leave(async (ctx) => {
-  console.log(ctx.scene.state);
-});
+startScene.leave(async (ctx) => {});
 
 export default startScene;
