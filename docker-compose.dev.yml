@@ -14,7 +14,7 @@ services:
       - storage_dev:/bitnami/mongodb
     environment:
       - MONGODB_PORT_NUMBER=5432
-      - MONGODB_ADVERTISED_HOSTNAME=storage
+      - MONGODB_ADVERTISED_HOSTNAME=storage_dev
 
   client_bot_dev:
     container_name: client_bot_dev
