@@ -3,6 +3,10 @@ jobs:
   deploy-production:
     docker:
       - image: kroniak/ssh-client
+    environment:
+      REMOTE_HOST: $PROD_REMOTE_HOST
+      REMOTE_USER: $PROD_REMOTE_USER
+      SSH_KEY: $PRIVATE_SSH_KEY
     steps:
       - checkout
       - add_ssh_keys:
@@ -11,7 +15,7 @@ jobs:
       - run:
           name: Deploy to production
           command: |
-            ssh $PROD_REMOTE_USER@$PROD_REMOTE_HOST \<< EOF
+            ssh -i $SSH_KEY $REMOTE_USER@$REMOTE_HOST \<< EOF
             cd ~/mindefy_api
             git checkout master
             git pull
@@ -20,12 +24,16 @@ jobs:
   deploy-dev:
     docker:
       - image: kroniak/ssh-client
+    environment:
+      REMOTE_HOST: $DEV_REMOTE_HOST
+      REMOTE_USER: $DEV_REMOTE_USER
+      SSH_KEY: $PRIVATE_SSH_KEY
     steps:
       - checkout
       - run:
           name: Deploy to dev
           command: |
-            ssh $REMOTE_USER@$REMOTE_HOST \<< EOF
+            ssh -i $SSH_KEY $REMOTE_USER@$REMOTE_HOST \<< EOF
             cd ~/mindefy_api
             git checkout dev
             git pull
