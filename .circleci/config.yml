@@ -5,13 +5,14 @@ jobs:
       - image: kroniak/ssh-client
     steps:
       - checkout
-      - add_ssh_keys:
-          fingerprints:
-            - "e7:e5:aa:f8:6c:e9:08:e5:7f:1c:ec:b6:b1:6b:e6:72"
       - run:
           name: Deploy to production
           command: |
-            echo ${DEV_REMOTE_USER}@${DEV_REMOTE_HOST}
+            mkdir -p ~/.ssh
+            chmod 700 ~/.ssh
+            echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
+            echo "${PRIVATE_SSH_KEY}" > ~/.ssh/id_rsa
+            chmod 600 ~/.ssh/id_rsa
             ssh ${PROD_REMOTE_USER}@${PROD_REMOTE_HOST} \<< EOF
             cd ~/mindefy_api
             git checkout master
@@ -26,6 +27,11 @@ jobs:
       - run:
           name: Deploy to dev
           command: |
+            mkdir -p ~/.ssh
+            chmod 700 ~/.ssh
+            echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
+            echo "${PRIVATE_SSH_KEY}" > ~/.ssh/id_rsa
+            chmod 600 ~/.ssh/id_rsa
             ssh ${DEV_REMOTE_USER}@${DEV_REMOTE_HOST} \<< EOF
             cd ~/mindefy_api
             git checkout dev
