@@ -15,6 +15,7 @@ services:
       - ./Static/js:/usr/share/nginx/html/js
     ports:
       - "80:80"
+      - "443:443"
 
   storage:
     image: "bitnami/mongodb:6.0.4"
