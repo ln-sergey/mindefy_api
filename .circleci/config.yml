@@ -1,16 +1,5 @@
 version: 2.1
 jobs:
-  build:
-    docker:
-      - image: circleci/node:latest
-    steps:
-      - checkout
-      - run:
-          name: Install dependencies
-          command: npm install
-      - run:
-          name: Run tests
-          command: npm test
   deploy-production:
     docker:
       - image: docker/compose:latest
@@ -24,9 +13,10 @@ jobs:
           name: Deploy to production
           command: |
             ssh -i $SSH_KEY $REMOTE_USER@$REMOTE_HOST \<< EOF
-            cd /path/to/your/application
+            cd ~/mindefy_api
+            git checkout master
             git pull
-            docker-compose -f docker-compose.prod.yml up -d
+            docker compose -f docker-compose.prod.yml up -d
             EOF
   deploy-dev:
     docker:
@@ -41,9 +31,10 @@ jobs:
           name: Deploy to dev
           command: |
             ssh -i $SSH_KEY $REMOTE_USER@$REMOTE_HOST \<< EOF
-            cd /path/to/your/application
+            cd ~/mindefy_api
+            git checkout dev
             git pull
-            docker-compose -f docker-compose.dev.yml up -d
+            docker compose -f docker-compose.dev.yml up -d
             EOF
 workflows:
   version: 2
