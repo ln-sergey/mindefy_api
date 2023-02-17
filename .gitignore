@@ -3,3 +3,4 @@
 **/*.DS_Store
 .env*
 docker-compose.yml
+Static/ssl/*
