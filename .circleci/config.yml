@@ -13,7 +13,7 @@ jobs:
             echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
             echo "${PRIVATE_SSH_KEY}" > ~/.ssh/id_rsa
             chmod 600 ~/.ssh/id_rsa
-            ssh ${PROD_REMOTE_USER}@${PROD_REMOTE_HOST} << EOF
+            ssh ${PROD_REMOTE_USER}@${PROD_REMOTE_HOST} \<< EOF
             cd ~/mindefy_api
             git checkout master
             git pull
