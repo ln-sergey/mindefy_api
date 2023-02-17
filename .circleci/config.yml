@@ -2,17 +2,13 @@ version: 2.1
 jobs:
   deploy-production:
     docker:
-      - image: docker/compose:latest
-    environment:
-      REMOTE_HOST: $PROD_REMOTE_HOST
-      REMOTE_USER: $PROD_REMOTE_USER
-      SSH_KEY: $PRIVATE_SSH_KEY
+      - image: alpine:latest
     steps:
       - checkout
       - run:
           name: Deploy to production
           command: |
-            ssh -i $SSH_KEY $REMOTE_USER@$REMOTE_HOST \<< EOF
+            ssh -i $PRIVATE_SSH_KEY $PROD_REMOTE_USER@$PROD_REMOTE_HOST \<< EOF
             cd ~/mindefy_api
             git checkout master
             git pull
@@ -20,11 +16,7 @@ jobs:
             EOF
   deploy-dev:
     docker:
-      - image: docker/compose:latest
-    environment:
-      REMOTE_HOST: $DEV_REMOTE_HOST
-      REMOTE_USER: $DEV_REMOTE_USER
-      SSH_KEY: $PRIVATE_SSH_KEY
+      - image: alpine:latest
     steps:
       - checkout
       - run:
