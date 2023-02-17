@@ -11,6 +11,7 @@ jobs:
       - run:
           name: Deploy to production
           command: |
+            echo ${DEV_REMOTE_USER}@${DEV_REMOTE_HOST}
             ssh ${PROD_REMOTE_USER}@${PROD_REMOTE_HOST} \<< EOF
             cd ~/mindefy_api
             git checkout master
