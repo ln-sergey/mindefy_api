@@ -4,9 +4,9 @@ jobs:
     docker:
       - image: docker/compose:latest
     environment:
-      - REMOTE_HOST=$PROD_REMOTE_HOST
-      - REMOTE_USER=$PROD_REMOTE_USER
-      - SSH_KEY=$PRIVATE_SSH_KEY
+      REMOTE_HOST: $PROD_REMOTE_HOST
+      REMOTE_USER: $PROD_REMOTE_USER
+      SSH_KEY: $PRIVATE_SSH_KEY
     steps:
       - checkout
       - run:
@@ -22,9 +22,9 @@ jobs:
     docker:
       - image: docker/compose:latest
     environment:
-      - REMOTE_HOST=$DEV_REMOTE_HOST
-      - REMOTE_USER=$PROD_REMOTE_USER
-      - SSH_KEY=$PRIVATE_SSH_KEY
+      REMOTE_HOST: $DEV_REMOTE_HOST
+      REMOTE_USER: $DEV_REMOTE_USER
+      SSH_KEY: $PRIVATE_SSH_KEY
     steps:
       - checkout
       - run:
