@@ -2,13 +2,16 @@ version: 2.1
 jobs:
   deploy-production:
     docker:
-      - image: alpine:latest
+      - image: kroniak/ssh-client
     steps:
       - checkout
+      - add_ssh_keys:
+          fingerprints:
+            - "e7:e5:aa:f8:6c:e9:08:e5:7f:1c:ec:b6:b1:6b:e6:72"
       - run:
           name: Deploy to production
           command: |
-            ssh -i $PRIVATE_SSH_KEY $PROD_REMOTE_USER@$PROD_REMOTE_HOST \<< EOF
+            ssh -i $PROD_REMOTE_USER@$PROD_REMOTE_HOST \<< EOF
             cd ~/mindefy_api
             git checkout master
             git pull
@@ -16,13 +19,13 @@ jobs:
             EOF
   deploy-dev:
     docker:
-      - image: alpine:latest
+      - image: kroniak/ssh-client
     steps:
       - checkout
       - run:
           name: Deploy to dev
           command: |
-            ssh -i $SSH_KEY $REMOTE_USER@$REMOTE_HOST \<< EOF
+            ssh -i $REMOTE_USER@$REMOTE_HOST \<< EOF
             cd ~/mindefy_api
             git checkout dev
             git pull
