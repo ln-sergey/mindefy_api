@@ -6,16 +6,16 @@ import { AppContext } from "./context";
 import { checkUser } from "./middlewares/check_user";
 import { MongoClient } from "mongodb";
 
+
 new MongoClient(
-  `mongodb://${process.env.DB_USER}` +
-    `:${process.env.DB_PASSWORD}@${process.env.DB_HOST}` +
-    `:${process.env.DB_PORT}/${process.env.DB_NAME}?authSource=admin`
+  `mongodb://${process.env.STORAGE_USERNAME}` +
+    `:${process.env.STORAGE_PASSWORD}@${process.env.STORAGE_HOSTNAME}/?authSource=admin`
 )
   .connect()
   .then(async (mongoClient: MongoClient) => {
     const bot: Telegraf<AppContext> = new Telegraf(process.env.BOT_TOKEN);
 
-    bot.context.dataBase = mongoClient.db(process.env.DB_NAME);
+    bot.context.dataBase = mongoClient.db(process.env.STORAGE_DB_NAME);
 
     const stage = new Scenes.Stage<Scenes.SceneContext>([startScene]);
 
