@@ -15,7 +15,7 @@ jobs:
       - run:
           name: Deploy to production
           command: |
-            ssh -i $SSH_KEY $REMOTE_USER@$REMOTE_HOST \<< EOF
+            ssh -i ${SSH_KEY} ${REMOTE_USER}@${REMOTE_HOST} \<< EOF
             cd ~/mindefy_api
             git checkout master
             git pull
@@ -33,7 +33,7 @@ jobs:
       - run:
           name: Deploy to dev
           command: |
-            ssh -i $SSH_KEY $REMOTE_USER@$REMOTE_HOST \<< EOF
+            ssh -i ${SSH_KEY} ${REMOTE_USER}@${REMOTE_HOST} \<< EOF
             cd ~/mindefy_api
             git checkout dev
             git pull
