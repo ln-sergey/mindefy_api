@@ -13,7 +13,7 @@ interface SceneSessionState {
 }
 
 startScene.enter(async (ctx) => {
-  await ctx.sendMessage(`${ctx.session.user.name} Please enter a negative statement about yourself.`);
+  await ctx.sendMessage(`Genious! Please enter a negative statement about yourself.`);
   ctx.scene.session.state = <SceneSessionState>{
     stage: 0,
     maxStages: 4,
