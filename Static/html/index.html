@@ -3,56 +3,169 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Positive Thinking Bot</title>
+    <title>Mindefy</title>
     <link
-      href="https://fonts.googleapis.com/css?family=Open+Sans:400,600&display=swap"
       rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Montserrat:400,700"
     />
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
-    <header>
+    <header class="header">
       <div class="container">
-        <h1>Mindefy - Positive Training Bot</h1>
-        <p class="lead">
-          Train your mind to focus on the positive with Martin Seligman's
-          methodology.
-        </p>
+        <nav class="navbar">
+          <div class="navbar-logo">
+            <a href="#" class="logo">Mindefy</a>
+          </div>
+          <ul class="navbar-menu">
+            <li class="menu-item">
+              <a href="#" class="menu-link">Home</a>
+            </li>
+            <li class="menu-item">
+              <a href="#Features_Section" class="menu-link">Features</a>
+            </li>
+          </ul>
+          <button class="navbar-toggle">
+            <span class="toggle-icon"></span>
+          </button>
+        </nav>
       </div>
     </header>
-    <main>
+
+    <section class="hero">
       <div class="container">
-        <div class="row">
-          <div class="col">
-            <h2>About Martin Seligman</h2>
-            <p>
-              Martin Seligman is a renowned psychologist who is known for his
-              work in positive psychology. He is the founder of the
-              discipline and has authored many books on the subject. Seligman
-              is a proponent of the theory that happiness and well-being can
-              be learned and cultivated through intentional activities and
-              positive thinking.
-            </p>
+        <div class="hero-content">
+          <h1 class="hero-heading">Start Solving Problems with AI</h1>
+          <p class="hero-subheading">
+            Find the perfect AI solution with Mindefy, the Telegram bot that
+            helps you select and use the best AI services for your needs.
+          </p>
+          <div class="cta">
+            <a href="https://t.me/positive_training_tg_bot" class="btn-primary"
+              >Get Started</a
+            >
           </div>
-          <div class="col">
-            <h2>How the Bot Works</h2>
-            <p>
-              The Positive Thinking Bot is based on Seligman's methodology
-              and is designed to help you train your mind to focus on the
-              positive. The bot will send you daily messages that will
-              encourage you to practice positive thinking and will provide
-              you with exercises to help you develop this skill.
+        </div>
+        <!-- <div class="hero-image">
+          <img src="https://via.placeholder.com/600x400" alt="Mindefy AI Bot" />
+        </div> -->
+      </div>
+    </section>
+
+    <section class="features" id="Features_Section">
+      <div class="container">
+        <h2 class="features-heading">Features</h2>
+
+        <div class="feature">
+          <div class="feature-icon">
+            <i class="fas fa-check"></i>
+          </div>
+          <div class="feature-details">
+            <h3 class="feature-heading">Find an AI solution to your problem</h3>
+            <p class="feature-description">
+              Mindefy is a simple Telegram bot that helps select an AI or
+              machine learning service from a list of predefined AI services.
             </p>
-            <a href="https://t.me/positive_training_tg_bot" class="btn-primary">Join Now</a>
+            <a href="#" class="feature-link">Learn more</a>
+          </div>
+        </div>
+
+        <div class="feature">
+          <div class="feature-icon">
+            <i class="fas fa-lightbulb"></i>
+          </div>
+          <div class="feature-details">
+            <h3 class="feature-heading">Get tips to use AI tools</h3>
+            <p class="feature-description">
+              Mindefy helps you get started with AI. It sends hints and examples
+              when it sees you're working on a problem via an AI Service.
+            </p>
+            <a href="#" class="feature-link">Learn more</a>
+          </div>
+        </div>
+
+        <div class="feature">
+          <div class="feature-icon">
+            <i class="fas fa-globe"></i>
+          </div>
+          <div class="feature-details">
+            <h3 class="feature-heading">Explore AI world</h3>
+            <p class="feature-description">
+              Mindefy helps you find out which services are most in demand and
+              understand how they work.
+            </p>
+            <a href="#" class="feature-link">Learn more</a>
           </div>
         </div>
       </div>
-    </main>
-    <footer>
+    </section>
+
+    <!-- <section class="cta-bottom">
+      <a href="#" class="btn-primary">Get Started</a>
+    </section> -->
+
+    <footer class="footer">
       <div class="container">
-        <p>&copy; 2023 Mindefy</p>
+        <div class="row">
+          <div class="col-md-4 col-sm-12">
+            <h4>Mindefy</h4>
+            <p>
+              Start solving problems with AI. Mindefy helps you find the best AI
+              services and provides hints for using AI tools.
+            </p>
+          </div>
+          <div class="col-md-4 col-sm-6">
+            <h4>Links</h4>
+            <ul>
+              <li><a href="#">Home</a></li>
+              <li><a href="#">Features</a></li>
+              <li><a href="#">About</a></li>
+              <li><a href="#">Contact</a></li>
+            </ul>
+          </div>
+          <div class="col-md-4 col-sm-6">
+            <h4>Contact Us</h4>
+            <ul>
+              <li>
+                <i class="fa fa-envelope"></i
+                ><a href="mailto:info@mindefy.space">info@mindefy.com</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <hr />
+            <div class="text-center">
+              <ul class="list-inline">
+                <li class="list-inline-item">
+                  <a href="#"><i class="fa fa-facebook"></i></a>
+                </li>
+                <li class="list-inline-item">
+                  <a href="#"><i class="fa fa-twitter"></i></a>
+                </li>
+                <li class="list-inline-item">
+                  <a href="#"><i class="fa fa-instagram"></i></a>
+                </li>
+              </ul>
+              <p>&copy; 2023 Mindefy. All rights reserved.</p>
+            </div>
+          </div>
+        </div>
       </div>
     </footer>
+
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $(".burger").click(function () {
+          $(".nav-links").toggleClass("show-menu");
+          $(".line1").toggleClass("line1-click");
+          $(".line2").toggleClass("line2-click");
+          $(".line3").toggleClass("line3-click");
+        });
+      });
+    </script>
   </body>
 </html>
