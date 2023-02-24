@@ -1,171 +1,472 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mindefy</title>
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css?family=Montserrat:400,700"
-    />
-    <link rel="stylesheet" href="css/style.css" />
+    <style>
+      * {
+        margin: 0px;
+        font-family: Helvetica, "Helvetica Neue", Roboto, Noto, Arial,
+          sans-serif;
+      }
+
+      #RootWrapperImproveQualityList {
+        display: flex;
+        justify-content: flex-start;
+        flex-direction: column;
+        align-items: flex-start;
+        min-height: 100vh;
+        background-color: white;
+        box-sizing: border-box;
+      }
+
+      #Frame43 {
+        display: flex;
+        justify-content: flex-start;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+        align-self: stretch;
+        background-color: rgb(37, 41, 46);
+        box-sizing: border-box;
+        padding: 20px 80px;
+        flex-shrink: 0;
+      }
+
+      #Mindefy {
+        color: white;
+        text-overflow: ellipsis;
+        font-size: 36px;
+        font-family: Inter, sans-serif;
+        font-weight: 600;
+        text-align: left;
+      }
+
+      #Frame45 {
+        display: flex;
+        justify-content: flex-start;
+        flex-direction: column;
+        align-items: flex-start;
+        flex: 1;
+        gap: 15px;
+        align-self: stretch;
+        height: 1216px;
+        box-sizing: border-box;
+        padding: 36px 0px 0px;
+        flex-shrink: 0;
+      }
+
+      #Frame46 {
+        display: flex;
+        justify-content: flex-start;
+        flex-direction: row;
+        align-items: flex-start;
+        flex: none;
+        gap: 10px;
+        box-sizing: border-box;
+        padding: 0px 80px;
+      }
+
+      #NaN {
+        color: rgb(89, 96, 105);
+        text-overflow: ellipsis;
+        font-size: 40px;
+        font-family: Helvetica, sans-serif;
+        font-weight: 400;
+        text-align: left;
+      }
+
+      #Frame44 {
+        display: flex;
+        justify-content: flex-start;
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 49px;
+        border: solid 1px rgb(209, 215, 221);
+        align-self: stretch;
+        box-sizing: border-box;
+        padding: 0px 80px;
+        flex-shrink: 0;
+      }
+
+      #ToolBarButton {
+        display: flex;
+        justify-content: flex-start;
+        flex-direction: column;
+        align-items: flex-start;
+        flex: none;
+        gap: 10px;
+        border: solid 1px rgb(43, 107, 211);
+        box-sizing: border-box;
+        padding: 15px 0px;
+      }
+
+      #NaN_0001 {
+        color: rgb(37, 41, 46);
+        text-overflow: ellipsis;
+        font-size: 16px;
+        font-family: Inter, sans-serif;
+        font-weight: 400;
+        text-align: left;
+      }
+
+      #ToolBarButtonInactive {
+        display: flex;
+        justify-content: flex-start;
+        flex-direction: column;
+        align-items: flex-start;
+        flex: none;
+        box-sizing: border-box;
+      }
+
+      #ToolBarButtonInactive_0001 {
+        display: flex;
+        justify-content: flex-start;
+        flex-direction: column;
+        align-items: flex-start;
+        flex: none;
+        gap: 10px;
+        box-sizing: border-box;
+        padding: 15px 0px;
+      }
+
+      #NaN_0002 {
+        color: rgb(89, 96, 105);
+        text-overflow: ellipsis;
+        font-size: 16px;
+        font-family: Helvetica, sans-serif;
+        font-weight: 400;
+        text-align: left;
+      }
+
+      #Frame47 {
+        display: flex;
+        justify-content: flex-start;
+        flex-direction: column;
+        align-items: flex-start;
+        flex: 1;
+        gap: 20px;
+        align-self: stretch;
+        height: 1055px;
+        box-sizing: border-box;
+        padding: 0px 80px;
+        flex-shrink: 0;
+      }
+
+      #ListItem {
+        display: flex;
+        justify-content: flex-start;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+        align-self: stretch;
+        box-sizing: border-box;
+        flex-shrink: 0;
+      }
+
+      #Frame48 {
+        display: flex;
+        justify-content: flex-start;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+        border: solid 1px rgb(209, 215, 221);
+        border-radius: 15px;
+        align-self: stretch;
+        box-sizing: border-box;
+        flex-shrink: 0;
+      }
+
+      #Frame49 {
+        display: flex;
+        justify-content: flex-start;
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 10px;
+        border: solid 1px rgb(209, 215, 221);
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+        align-self: stretch;
+        background-color: rgb(246, 248, 250);
+        box-sizing: border-box;
+        padding: 24px;
+        flex-shrink: 0;
+      }
+
+      #LetSEnhance {
+        color: rgb(43, 107, 211);
+        text-overflow: ellipsis;
+        font-size: 32px;
+        font-family: Helvetica, sans-serif;
+        font-weight: 400;
+        text-align: left;
+      }
+
+      #Frame50 {
+        display: flex;
+        justify-content: flex-start;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 24px;
+        align-self: stretch;
+        box-sizing: border-box;
+        padding: 0px 24px;
+        flex-shrink: 0;
+      }
+
+      #_16 {
+        color: rgb(89, 96, 105);
+        text-overflow: ellipsis;
+        font-size: 16px;
+        font-family: Helvetica, sans-serif;
+        font-weight: 400;
+        text-align: left;
+        width: 591px;
+      }
+
+      #Frame52 {
+        display: flex;
+        justify-content: flex-start;
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 10px;
+        align-self: stretch;
+        box-sizing: border-box;
+        flex-shrink: 0;
+      }
+
+      #Tag {
+        display: flex;
+        justify-content: flex-start;
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 10px;
+        border-radius: 20px;
+        align-self: stretch;
+        background-color: rgb(225, 243, 254);
+        box-sizing: border-box;
+        padding: 8px 14px;
+        flex-shrink: 0;
+      }
+
+      #_10 {
+        color: rgb(43, 107, 211);
+        text-overflow: ellipsis;
+        font-size: 14px;
+        font-family: Helvetica, sans-serif;
+        font-weight: 700;
+        text-align: left;
+      }
+
+      #Frame51 {
+        display: flex;
+        justify-content: flex-start;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+        border: solid 1px rgb(209, 215, 221);
+        align-self: stretch;
+        box-sizing: border-box;
+        padding: 15px 24px;
+        flex-shrink: 0;
+      }
+
+      #Button {
+        display: flex;
+        justify-content: flex-start;
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 10px;
+        border: solid 1px rgb(209, 215, 221);
+        border-radius: 5px;
+        align-self: stretch;
+        background-color: rgb(246, 248, 250);
+        box-sizing: border-box;
+        padding: 8px 14px;
+        flex-shrink: 0;
+      }
+
+      #NaN_0004 {
+        color: rgb(37, 41, 46);
+        text-overflow: ellipsis;
+        font-size: 14px;
+        font-family: Helvetica, sans-serif;
+        font-weight: 700;
+        text-align: left;
+      }
+
+      #Button_0002 {
+        display: flex;
+        justify-content: flex-start;
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 10px;
+        border: solid 1px rgb(209, 215, 221);
+        border-radius: 5px;
+        align-self: stretch;
+        background-color: rgb(246, 248, 250);
+        box-sizing: border-box;
+        padding: 6px 14px;
+        flex-shrink: 0;
+      }
+
+      #NaN_0006 {
+        color: rgb(89, 96, 105);
+        text-overflow: ellipsis;
+        font-size: 12px;
+        font-family: Helvetica, sans-serif;
+        font-weight: 700;
+        text-align: center;
+        width: 1260px;
+        flex: 1;
+      }
+    </style>
   </head>
   <body>
-    <header class="header">
-      <div class="container">
-        <nav class="navbar">
-          <div class="navbar-logo">
-            <a href="#" class="logo">Mindefy</a>
-          </div>
-          <ul class="navbar-menu">
-            <li class="menu-item">
-              <a href="#" class="menu-link">Home</a>
-            </li>
-            <li class="menu-item">
-              <a href="#Features_Section" class="menu-link">Features</a>
-            </li>
-          </ul>
-          <button class="navbar-toggle">
-            <span class="toggle-icon"></span>
-          </button>
-        </nav>
+    <div id="RootWrapperImproveQualityList">
+      <div id="Frame43">
+        <span id="Mindefy"> Mindefy </span>
       </div>
-    </header>
-
-    <section class="hero">
-      <div class="container">
-        <div class="hero-content">
-          <h1 class="hero-heading">Start Solving Problems with AI</h1>
-          <p class="hero-subheading">
-            Find the perfect AI solution with Mindefy, the Telegram bot that
-            helps you select and use the best AI services for your needs.
-          </p>
-          <div class="cta">
-            <a href="https://t.me/positive_training_tg_bot" class="btn-primary"
-              >Get Started</a
-            >
+      <div id="Frame45">
+        <div id="Frame46">
+          <span id="NaN"> Нейросети для улучшения качества </span>
+        </div>
+        <div id="Frame44">
+          <div id="ToolBarButton">
+            <span id="NaN_0001"> ФОТО </span>
+          </div>
+          <div id="ToolBarButtonInactive">
+            <div id="ToolBarButtonInactive_0001">
+              <span id="NaN_0002"> АРТЫ </span>
+            </div>
+          </div>
+          <div id="ToolBarButtonInactive">
+            <div id="ToolBarButtonInactive_0001">
+              <span id="NaN_0002"> ВИДЕО </span>
+            </div>
           </div>
         </div>
-        <!-- <div class="hero-image">
-          <img src="https://via.placeholder.com/600x400" alt="Mindefy AI Bot" />
-        </div> -->
-      </div>
-    </section>
-
-    <section class="features" id="Features_Section">
-      <div class="container">
-        <h2 class="features-heading">Features</h2>
-
-        <div class="feature">
-          <div class="feature-icon">
-            <i class="fas fa-check"></i>
+        <div id="Frame47">
+          <div id="ListItem">
+            <div id="ListItem">
+              <div id="Frame48">
+                <div id="Frame49">
+                  <span id="LetSEnhance"><a href="https://letsenhance.io/"> Let’s Enhance </a></span>
+                </div>
+                <div id="Frame50">
+                  <span id="_16">
+                    Автоматически редактор, позволяющий изменять масштаб и
+                    улучшать изображения. Максимум можно увеличить иллюстрации в
+                    16 раз. Есть возможность сбалансировать и улучшить цвета,
+                    автоматически изменить контрастность, яркость и экспозицию.
+                  </span>
+                  <div id="Frame52">
+                    <div id="Tag">
+                      <span id="_10"> 10 Бесплатных картинок </span>
+                    </div>
+                    <div id="Tag">
+                      <span id="_10"> Уменьшение шума </span>
+                    </div>
+                    <div id="Tag">
+                      <span id="_10"> Уменьшение размытости </span>
+                    </div>
+                  </div>
+                </div>
+                <div id="Frame51">
+                  <div id="Frame52">
+                    <div id="Button">
+                      <span id="NaN_0004"> Как использовать? </span>
+                    </div>
+                    <div id="Button">
+                      <span id="NaN_0004"> Советы </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id="Button_0002">
+              <span id="NaN_0006"> Обсуждение (156) </span>
+            </div>
           </div>
-          <div class="feature-details">
-            <h3 class="feature-heading">Find an AI solution to your problem</h3>
-            <p class="feature-description">
-              Mindefy is a simple Telegram bot that helps select an AI or
-              machine learning service from a list of predefined AI services.
-            </p>
-            <a href="#" class="feature-link">Learn more</a>
+          <div id="ListItem">
+            <div id="ListItem">
+              <div id="Frame48">
+                <div id="Frame49">
+                  <span id="LetSEnhance"><a href="https://vanceai.com/image-enlarger/"> VanceAI Image Enlarger </a></span>
+                </div>
+                <div id="Frame50">
+                  <span id="_16">
+                    Сервис для обработки изображений. Доступно более 18 функций.
+                    Вы можете увеличить изображение до 800% без потери качества,
+                    увеличить резкость, удалить фон, сжать картинку и т. д.
+                  </span>
+                  <div id="Frame52">
+                    <div id="Tag">
+                      <span id="_10"> 3 Бесплатных картинки </span>
+                    </div>
+                    <div id="Tag">
+                      <span id="_10"> Уменьшение шума </span>
+                    </div>
+                    <div id="Tag">
+                      <span id="_10"> Уменьшение размытости </span>
+                    </div>
+                  </div>
+                </div>
+                <div id="Frame51">
+                  <div id="Frame52">
+                    <div id="Button">
+                      <span id="NaN_0004"> Как использовать? </span>
+                    </div>
+                    <div id="Button">
+                      <span id="NaN_0004"> Советы </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id="Button_0002">
+              <span id="NaN_0006"> Обсуждение (156) </span>
+            </div>
           </div>
-        </div>
-
-        <div class="feature">
-          <div class="feature-icon">
-            <i class="fas fa-lightbulb"></i>
-          </div>
-          <div class="feature-details">
-            <h3 class="feature-heading">Get tips to use AI tools</h3>
-            <p class="feature-description">
-              Mindefy helps you get started with AI. It sends hints and examples
-              when it sees you're working on a problem via an AI Service.
-            </p>
-            <a href="#" class="feature-link">Learn more</a>
-          </div>
-        </div>
-
-        <div class="feature">
-          <div class="feature-icon">
-            <i class="fas fa-globe"></i>
-          </div>
-          <div class="feature-details">
-            <h3 class="feature-heading">Explore AI world</h3>
-            <p class="feature-description">
-              Mindefy helps you find out which services are most in demand and
-              understand how they work.
-            </p>
-            <a href="#" class="feature-link">Learn more</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- <section class="cta-bottom">
-      <a href="#" class="btn-primary">Get Started</a>
-    </section> -->
-
-    <footer class="footer">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-4 col-sm-12">
-            <h4>Mindefy</h4>
-            <p>
-              Start solving problems with AI. Mindefy helps you find the best AI
-              services and provides hints for using AI tools.
-            </p>
-          </div>
-          <div class="col-md-4 col-sm-6">
-            <h4>Links</h4>
-            <ul>
-              <li><a href="#">Home</a></li>
-              <li><a href="#">Features</a></li>
-              <li><a href="#">About</a></li>
-              <li><a href="#">Contact</a></li>
-            </ul>
-          </div>
-          <div class="col-md-4 col-sm-6">
-            <h4>Contact Us</h4>
-            <ul>
-              <li>
-                <i class="fa fa-envelope"></i
-                ><a href="mailto:info@mindefy.space">info@mindefy.com</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-12">
-            <hr />
-            <div class="text-center">
-              <ul class="list-inline">
-                <li class="list-inline-item">
-                  <a href="#"><i class="fa fa-facebook"></i></a>
-                </li>
-                <li class="list-inline-item">
-                  <a href="#"><i class="fa fa-twitter"></i></a>
-                </li>
-                <li class="list-inline-item">
-                  <a href="#"><i class="fa fa-instagram"></i></a>
-                </li>
-              </ul>
-              <p>&copy; 2023 Mindefy. All rights reserved.</p>
+          <div id="ListItem">
+            <div id="ListItem">
+              <div id="Frame48">
+                <div id="Frame49">
+                    <span id="LetSEnhance"><a href="https://zyro.com/tools/image-upscaler"> Zyro AI Image Upscaler </a></span>
+                </div>
+                <div id="Frame50">
+                  <span id="_16">
+                    Бесплатный онлайн-инструмент, позволяющий увеличить качество
+                    фотографий. Сервис разработала компания Zyro.
+                  </span>
+                  <div id="Frame52">
+                    <div id="Tag">
+                      <span id="_10"> Бесплатный </span>
+                    </div>
+                    <div id="Tag">
+                      <span id="_10"> Уменьшение шума </span>
+                    </div>
+                    <div id="Tag">
+                      <span id="_10"> Уменьшение размытости </span>
+                    </div>
+                  </div>
+                </div>
+                <div id="Frame51">
+                  <div id="Frame52">
+                    <div id="Button">
+                      <span id="NaN_0004"> Как использовать? </span>
+                    </div>
+                    <div id="Button">
+                      <span id="NaN_0004"> Советы </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id="Button_0002">
+              <span id="NaN_0006"> Обсуждение (156) </span>
             </div>
           </div>
         </div>
       </div>
-    </footer>
-
-    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script>
-      $(document).ready(function () {
-        $(".burger").click(function () {
-          $(".nav-links").toggleClass("show-menu");
-          $(".line1").toggleClass("line1-click");
-          $(".line2").toggleClass("line2-click");
-          $(".line3").toggleClass("line3-click");
-        });
-      });
-    </script>
+    </div>
   </body>
 </html>
