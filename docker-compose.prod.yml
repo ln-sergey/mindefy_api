@@ -13,6 +13,7 @@ services:
       - ./Static/html:/usr/share/nginx/html
       - ./Static/css:/usr/share/nginx/html/css
       - ./Static/js:/usr/share/nginx/html/js
+      - ./Static/icon:/usr/share/nginx/html/icon
     ports:
       - "80:80"
       - "443:443"
