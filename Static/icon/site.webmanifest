@@ -1,1 +1,24 @@
-{"name":"Mindefy","short_name":"mindefy","icons":[{"src":"/android-chrome-192x192.png","sizes":"192x192","type":"image/png"},{"src":"/android-chrome-512x512.png","sizes":"512x512","type":"image/png"}],"theme_color":"#ffffff","background_color":"#ffffff","display":"standalone"}
+{
+    "name": "Mindefy - Нейросети для улучшения качества",
+    "short_name": "mindefy",
+    "description": "Mindefy - Список лучших нейросетей для улучшения качества изображений.",
+    "default_locale": "ru",
+    "start_url": "/",
+    "manifest_version": 2,
+    "orientation": "any",
+    "theme_color": "#526EFF",
+    "background_color": "#FFFFFF",
+    "display": "fullscreen",
+    "icons": [
+        {
+            "src": "/android-chrome-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/android-chrome-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}
