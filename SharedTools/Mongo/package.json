@@ -1,0 +1,24 @@
+{
+  "name": "@shared-tools/mongodb",
+  "version": "0.1.0",
+  "main": "lib/index.js",
+  "typings": "types/index.d.ts",
+  "author": "ln-sergey",
+  "files": [
+    "lib",
+    "types"
+  ],
+  "scripts": {
+    "upd": "npm run build && npm link",
+    "build": "npm run clean && npm run compile",
+    "clean": "rm -rf lib",
+    "compile": "tsc"
+  },
+  "dependencies": {
+    "mongodb": "^5.7.0"
+  },
+  "devDependencies": {
+    "@types/mongodb": "^4.0.7",
+    "typescript": "^4.9.5"
+  }
+}

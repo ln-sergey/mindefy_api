@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "target": "es2018",
+    "module": "commonjs",
+    "experimentalDecorators": true,
+    "outDir": "./lib",
+    "declaration": false,
+    "skipLibCheck": false,
+    "baseUrl": ".",
+    "paths": {
+      "Types": ["./types"]
+    }
+  },
+  "include": ["src/**/*"],
+  "exclude": ["./lib", "./node_modules"]
+}

@@ -1,0 +1,19 @@
+{
+  "name": "@data/topics",
+  "version": "0.1.0",
+  "main": "lib/index.js",
+  "typings": "lib/index.d.ts",
+  "author": "ln-sergey",
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "upd": "npm run build && npm link",
+    "build": "npm run clean && npm run compile",
+    "clean": "rm -rf lib",
+    "compile": "tsc"
+  },
+  "devDependencies": {
+    "typescript": "^5.1.6"
+  }
+}
