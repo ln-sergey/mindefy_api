@@ -1,0 +1,9 @@
+{
+  "packages": [
+    "packages/Contracts",
+    "packages/Models",
+    "packages/Topics"
+  ],
+  "version": "0.1.0",
+  "$schema": "node_modules/lerna/schemas/lerna-schema.json"
+}

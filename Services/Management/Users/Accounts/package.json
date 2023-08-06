@@ -8,7 +8,9 @@
     "clean": "rm -rf ./dist",
     "compile": "npx tsc --skipLibCheck",
     "start:prod": "node ./dist/index.js",
-    "start:dev": "nodemon --watch src --exec ts-node ./src/index.ts"
+    "start:dev": "nodemon --watch src --exec ts-node ./src/index.ts",
+    "upd:data": "npm link @data/models @data/contracts @data/topics",
+    "upd:tools": "npm link @data/models @data/contracts @data/topics"
   },
   "repository": {
     "type": "git",
